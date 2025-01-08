@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./Navbar.css";
+import { fetchPosts } from "../../Features/Posts/postsSlice";
 
 function Navbar() {
-    return (
-        <div className="topbar">
-            <img src="../src/Components/Navbar/reddit_logo.png" className="logo"></img>
-            <form>
-                <input type="text" 
-                    className="searchBar"
-                    placeholder="What are you searching for...?" >
-                </input>
-                <button type="submit" 
-                    className="submitButton">
-                        <img src="../src/Components/Navbar/search_icon.png" />
-                </button>
-            </form>
-        </div>
-    );
+  const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (searchTerm.trim() !== "") {
+      dispatch(fetchPosts(searchTerm));  // Dispatch search action with the input value
+    }
+  };
+
+  return (
+    <div className="topbar">
+      <img src="./src/Components/Navbar/reddit_logo.png" className="logo" alt="Reddit logo" />
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          className="searchBar"
+          placeholder="Search subreddit..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button type="submit" className="submitButton">
+          <img src="./src/Components/Navbar/search_icon.png" alt="Search icon" />
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default Navbar;

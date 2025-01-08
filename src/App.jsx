@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Navbar from './Navbar/Navbar'
-
+import Navbar from './Components/Navbar/Navbar';
 import './App.css'
+import PostsList from './Features/Posts/PostsList';
 
 function App() {
   
@@ -9,6 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <PostsList />
     </>
   )
 }

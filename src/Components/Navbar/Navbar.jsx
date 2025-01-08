@@ -11,6 +11,7 @@ function Navbar() {
     event.preventDefault();
     if (searchTerm.trim() !== "") {
       dispatch(fetchPosts(searchTerm));  // Dispatch search action with the input value
+      setSearchTerm("");
     }
   };
 

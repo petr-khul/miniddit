@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import Navbar from './Components/Navbar/Navbar';
 import './App.css'
+import Navbar from './Components/Navbar/Navbar';
 import PostsList from './Features/Posts/PostsList';
+import Sidebar from './Components/Sidebar/Sidebar';
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
     <>
       <Navbar />
       <PostsList />
+      <Sidebar />
     </>
   )
 }

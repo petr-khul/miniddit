@@ -27,7 +27,7 @@ function Navbar() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button type="submit" className="submitButton">
-          <img src="./src/Components/Navbar/search_icon.png" alt="Search icon" />
+          <img src="./src/Components/Navbar/search_icon.png" alt="Search icon" className="searchIcon" />
         </button>
       </form>
     </div>

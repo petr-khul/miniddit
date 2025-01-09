@@ -1,0 +1,21 @@
+.postsListContainer {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(172, 172, 172, 0.185);
+    padding: 5px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.postsList {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+}
+
+.post {
+    border-radius: 15px;
+    border: 1px solid gray;
+    padding: 10px;
+    margin-bottom: 5px;
+}

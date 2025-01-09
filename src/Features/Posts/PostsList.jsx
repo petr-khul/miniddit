@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "./postsSlice";
 import { getTimeAgo } from "../../Utils/Utils";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import "./PostsList.css";
 
 const PostsList = () => {
   const dispatch = useDispatch();
@@ -46,15 +47,15 @@ const PostsList = () => {
   if (postStatus === "failed") return <p>Error: {error}</p>;
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="postsListContainer">
       {/* Sidebar */}
       <Sidebar onSelectSubreddit={handleSelectSubreddit} />
 
       {/* Posts List */}
-      <div style={{ marginLeft: "220px", padding: "20px", flex: 1 }}>
+      <div className="postsList">
         <h2>Posts from r/{selectedSubreddit}</h2>
         {posts.map((post) => (
-          <div key={post.id} style={{ border: "1px solid #ddd", padding: "10px", marginBottom: "10px" }}>
+          <div key={post.id} className="post">
             {/* Thumbnail Image */}
             {post.thumbnail && post.thumbnail !== "self" && post.thumbnail !== "default" ? (
               <img src={post.thumbnail} alt="Post thumbnail" style={{ width: "70px", marginRight: "10px" }} />

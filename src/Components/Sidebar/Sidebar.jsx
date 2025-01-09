@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Sidebar.css";
 
 function Sidebar({ onSelectSubreddit }) {
     const subreddits = [
@@ -8,18 +9,21 @@ function Sidebar({ onSelectSubreddit }) {
         "webdev", 
         "programming", 
         "technology", 
+        "html", 
+        "css", 
+        "codecademy"
     ];
   
   
     return (
-        <div style={{ width: "200px", padding: "10px", borderRight: "1px solid #ddd" }}>
+        <div className="sidebar">
           <h3>Popular Subreddits</h3>
           <ul style={{ listStyleType: "none", padding: "0" }}>
             {subreddits.map((subreddit) => (
               <li key={subreddit} style={{ marginBottom: "10px" }}>
                 <button 
                   onClick={() => onSelectSubreddit(subreddit)} 
-                  style={{ padding: "8px", width: "100%", cursor: "pointer" }}
+                  className="subredditButton"
                 >
                   r/{subreddit}
                 </button>

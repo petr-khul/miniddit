@@ -15,6 +15,8 @@ const PostsList = () => {
   const error = useSelector((state) => state.posts.error);
   const [votes, setVotes] = useState({});
   const [selectedSubreddit, setSelectedSubreddit] = useState("popular");
+  const [visibleComments, setVisibleComments] = useState({});
+
 
   const comments = useSelector((state) => state.comments);
 
@@ -56,7 +58,17 @@ const PostsList = () => {
     dispatch(fetchComments(permalink));
   };
   
-
+  const handleToggleComments = (postId, permalink) => {
+    setVisibleComments((prev) => ({
+      ...prev,
+      [postId]: !prev[postId],
+    }));
+  
+    if (!visibleComments[postId] && !comments[permalink]?.data) {
+      dispatch(fetchComments(permalink)); // Fetch only if not already loaded
+    }
+  };
+  
 
   if (postStatus === "loading") return <p>Loading...</p>;
   if (postStatus === "failed") return <p>Error: {error}</p>;
@@ -88,11 +100,12 @@ const PostsList = () => {
 
             <p>Posted: {getTimeAgo(post.created_utc)}</p>
 
-            <button onClick={() => handleLoadComments(post.id, post.permalink)}>
-              {comments[post.permalink]?.data ? 'Hide Comments' : 'Load Comments'}
+            <button onClick={() => handleToggleComments(post.id, post.permalink)}>
+              {visibleComments[post.id] ? 'Hide Comments' : 'Load Comments'}
             </button>
-            {comments[post.permalink]?.loading && <p>Loading comments...</p>}
-            {comments[post.permalink]?.data && (
+
+            {visibleComments[post.id] && comments[post.permalink]?.loading && <p>Loading comments...</p>}
+            {visibleComments[post.id] && comments[post.permalink]?.data && (
               <ul>
                 {comments[post.permalink].data.map((comment) => (
                   <li key={comment.id}>
@@ -101,7 +114,8 @@ const PostsList = () => {
                 ))}
               </ul>
             )}
-            {comments[post.permalink]?.error && <p>Error loading comments.</p>}
+            {visibleComments[post.id] && comments[post.permalink]?.error && <p>Error loading comments.</p>}
+
 
           </div>
         ))}

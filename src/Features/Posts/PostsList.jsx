@@ -79,44 +79,56 @@ const PostsList = () => {
       <div className="postsList">
         <h2>Posts from r/{selectedSubreddit}</h2>
         {posts.map((post) => (
+
+          
           <div key={post.id} className="post">
-            {post.preview && post.preview.images[0]?.source && (
+            <a href={`https://reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">
+              <h3>{post.title}</h3>
+            </a>
+
+            {post.preview && post.preview.images[0]?.source && (              
+              
               <img
                 src={post.preview.images[0].source.url.replace(/&amp;/g, "&")}
                 alt="Post image"
                 className="postImage"
               />
             )}
-            <a href={`https://reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">
-              <h3>{post.title}</h3>
-            </a>
-            <p>Subreddit: r/{post.subreddit}</p>
-            <p>Author: {post.author}</p>
-            <p>Comments: {post.num_comments}</p>
+
+            <div className="postMenu">
+              <p>Subreddit: <strong>r/{post.subreddit}</strong></p>
+              <p>Author: <span className="author">{post.author}</span></p>
+
+              <p>
+                <img 
+                  src="./comment.png" 
+                  className="commentImage" 
+                  onClick={() => handleToggleComments(post.id, post.permalink)}/>{post.num_comments}
+              </p>
+
+              <p>Posted: {getTimeAgo(post.created_utc)}</p>
+              
+              <div className="votes">
+                <button onClick={() => handleUpvote(post.id)}><img src="./upvote.png" className="voteButtonIcon" /> </button>
+                <p>{votes[post.id] || post.ups}</p>
+                <button onClick={() => handleDownvote(post.id)}><img src="./downvote.png" className="voteButtonIcon" />  </button>
+              </div>
+            </div> 
+
+            <div className = "comments">
+              {visibleComments[post.id] && comments[post.permalink]?.loading && <p>Loading comments...</p>}
+              {visibleComments[post.id] && comments[post.permalink]?.data && (
+                <ul>
+                  {comments[post.permalink].data.map((comment) => (
+                    <li key={comment.id}>
+                      <strong>{comment.author}</strong>: {comment.body}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {visibleComments[post.id] && comments[post.permalink]?.error && <p>Error loading comments.</p>}
+            </div>
             
-            <button onClick={() => handleUpvote(post.id)}>Upvote</button>
-            <p>Votes: {votes[post.id] || post.ups}</p>
-            <button onClick={() => handleDownvote(post.id)}>Downvote</button>
-
-            <p>Posted: {getTimeAgo(post.created_utc)}</p>
-
-            <button onClick={() => handleToggleComments(post.id, post.permalink)}>
-              {visibleComments[post.id] ? 'Hide Comments' : 'Load Comments'}
-            </button>
-
-            {visibleComments[post.id] && comments[post.permalink]?.loading && <p>Loading comments...</p>}
-            {visibleComments[post.id] && comments[post.permalink]?.data && (
-              <ul>
-                {comments[post.permalink].data.map((comment) => (
-                  <li key={comment.id}>
-                    <strong>{comment.author}</strong>: {comment.body}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {visibleComments[post.id] && comments[post.permalink]?.error && <p>Error loading comments.</p>}
-
-
           </div>
         ))}
       </div>

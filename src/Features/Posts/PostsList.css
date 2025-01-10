@@ -33,3 +33,33 @@
 .postImage {
     width: 50%;
 }
+
+.postMenu {
+    display: flex;
+
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.author { 
+    color: blue;
+    font-weight: bolder;
+}
+
+.votes {
+    display: flex;
+}
+
+.voteButtonIcon {
+    cursor: pointer;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.commentImage {
+    cursor: pointer;
+}
+

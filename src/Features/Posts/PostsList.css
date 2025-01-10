@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: rgba(172, 172, 172, 0.185);
+    box-shadow: 0px 5px 10px gray;
     padding: 5px;
-    border-radius: 15px;
     margin-top: 10px;
 }
 
@@ -14,8 +14,18 @@
 }
 
 .post {
-    border-radius: 15px;
-    border: 1px solid gray;
+    border: 1px solid rgba(128, 128, 128, 0.384);
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 10px gray;
+    background-color: rgba(179, 212, 255, 0.164);
+}
+
+.postList {
+    width: 50%; 
+    margin-bottom: 10px
+}
+
+.postImage {
+    width: 50%;
 }

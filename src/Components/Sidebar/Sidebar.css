@@ -1,11 +1,10 @@
 .sidebar {
-    width: 200px;
+    width: 600px;
     padding: 10px;
     border-right: 1px solid #ddd;
-    background-color: lightgray;
+    background-color: rgba(179, 212, 255, 0.397);
     margin: 5px;
-    border-radius: 15px;
-    box-shadow: 2px 2px;
+    box-shadow: 0px 5px 10px gray;
 }
 .subredditButton {
     width: 90%;

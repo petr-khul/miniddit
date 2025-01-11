@@ -13,8 +13,10 @@
     padding: 10px 50px;
 }
 
-.postsList h2 {
+.postsList h2, h3, a {
     font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-decoration: none;
 }
 
 .post {
@@ -36,9 +38,17 @@
 
 .postMenu {
     display: flex;
-
     justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(172, 172, 172, 0.281);
+}
+
+.commentsNumber {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .author { 
@@ -48,6 +58,13 @@
 
 .votes {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.votes button {
+    height: 20px;
+    margin: 5px;
 }
 
 .voteButtonIcon {
@@ -57,9 +74,21 @@
 .comments {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0px 20x;
+    background-color: rgba(172, 172, 172, 0.281);
 }
 
 .commentImage {
     cursor: pointer;
+    margin: 5px;
+}
+
+.comments li {
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 0 30px;
 }
 

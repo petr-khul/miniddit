@@ -99,14 +99,15 @@ const PostsList = () => {
               <p>Subreddit: <strong>r/{post.subreddit}</strong></p>
               <p>Author: <span className="author">{post.author}</span></p>
 
-              <p>
+              <p className="commentsNumber">
                 <img 
                   src="./comment.png" 
                   className="commentImage" 
-                  onClick={() => handleToggleComments(post.id, post.permalink)}/>{post.num_comments}
+                  onClick={() => handleToggleComments(post.id, post.permalink)}/>
+                {post.num_comments}
               </p>
 
-              <p>Posted: {getTimeAgo(post.created_utc)}</p>
+              <p>Posted:<i>{getTimeAgo(post.created_utc)}</i></p>
               
               <div className="votes">
                 <button onClick={() => handleUpvote(post.id)}><img src="./upvote.png" className="voteButtonIcon" /> </button>
@@ -116,6 +117,7 @@ const PostsList = () => {
             </div> 
 
             <div className = "comments">
+
               {visibleComments[post.id] && comments[post.permalink]?.loading && <p>Loading comments...</p>}
               {visibleComments[post.id] && comments[post.permalink]?.data && (
                 <ul>

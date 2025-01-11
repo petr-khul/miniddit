@@ -5,7 +5,17 @@
     background-color: rgba(179, 212, 255, 0.397);
     margin: 5px;
     box-shadow: 0px 5px 10px gray;
+    text-align: center;
 }
 .subredditButton {
     width: 90%;
+    height: 30px;
+    background: none;    
+    border: none;    
+    border-bottom: 1px solid grey;;    
+    color: inherit;     
+    padding: 0;          
+    font: inherit;      
+    cursor: pointer;  
+    font-weight: bolder;
 }

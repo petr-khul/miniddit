@@ -1,5 +1,5 @@
 .sidebar {
-    width: 600px;
+    width: 300px;
     padding: 10px;
     border-right: 1px solid #ddd;
     background-color: rgba(179, 212, 255, 0.397);
@@ -14,6 +14,18 @@
     border: none;    
     border-bottom: 1px solid grey;;    
     color: inherit;     
+    padding: 0;          
+    font: inherit;      
+    cursor: pointer;  
+    font-weight: bolder;
+}
+
+.subredditButton:hover {
+    width: 90%;
+    height: 30px;
+    background-color: rgba(255, 166, 0, 0.377);    
+    border: none;    
+    border-bottom: 1px solid grey;;      
     padding: 0;          
     font: inherit;      
     cursor: pointer;  
